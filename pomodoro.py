@@ -27,11 +27,18 @@ def countdown(seconds):
 
 
 def pomodoro(down, up):
+    cycle = 0
     while True:
+        cycle += 1
         press_enter("Back to work!")
         countdown(down)
-        press_enter("It's time for a break!")
-        countdown(up)
+
+        if cycle % 4 != 0:
+            press_enter("It's time for a break!")
+            countdown(up)
+        else:
+            press_enter("You've earned a nice, long break!")
+            countdown(down)
 
 
 if __name__ == "__main__":
