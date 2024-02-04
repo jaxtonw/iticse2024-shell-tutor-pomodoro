@@ -117,7 +117,7 @@ def seconds_to_timestamp(seconds):
 
 def countdown(seconds):
     while seconds >= 0:
-        print(seconds_to_timestamp(seconds), end="      \r")
+        print(seconds_to_timestamp(seconds), end="\n\x1b[K")
         seconds -= 1
         sleep(DELAY)
 
