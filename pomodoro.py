@@ -7,7 +7,7 @@ def press_enter(message):
 
 def countdown(seconds):
     while seconds >= 0:
-        print(seconds, end="\r")
+        print(seconds, end="     \r")
         seconds -= 1
         sleep(1.0)
 
