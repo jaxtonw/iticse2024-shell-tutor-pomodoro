@@ -1,18 +1,22 @@
 from time import sleep
 
 
+def press_enter(message):
+    input(f"\a{message} Press [ENTER] to start cycle, Ctrl-C to quit")
+
+
 def countdown(seconds):
     while seconds >= 0:
-        print(seconds)
+        print(seconds, end="\r")
         seconds -= 1
         sleep(1.0)
 
 
 def pomodoro(down, up):
     while True:
-        print("Back to work! (Ctrl-C to quit)")
+        press_enter("Back to work!")
         countdown(down)
-        print("It's time for a break! (Ctrl-C to quit)")
+        press_enter("It's time for a break!")
         countdown(up)
 
 
