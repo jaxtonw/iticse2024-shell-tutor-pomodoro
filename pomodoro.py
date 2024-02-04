@@ -3,6 +3,15 @@ from time import sleep
 
 DELAY = 0.005
 
+
+def cyan():
+    print(end="\r\x1b[1;36m", flush=True)
+
+
+def yellow():
+    print(end="\r\x1b[1;33m", flush=True)
+
+
 def press_enter(message):
     input(f"\a{message} Press [ENTER] to start cycle, Ctrl-C to quit")
 
@@ -31,15 +40,18 @@ def pomodoro(down, up):
     while True:
         try:
             cycle += 1
+            cyan()
             press_enter("Back to work!")
             countdown(down)
 
+            yellow()
             if cycle % 4 != 0:
                 press_enter("It's time for a break!")
                 countdown(up)
             else:
                 press_enter("You've earned a nice, long break!")
                 countdown(down)
+
         except KeyboardInterrupt:
             print()
             break
