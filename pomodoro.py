@@ -2,6 +2,9 @@ from time import sleep
 
 
 DELAY = 0.005
+REVERSE = "\x1b[7m"
+NORMAL = "\x1b[27m"
+
 
 def press_enter(message):
     input(f"\a{message} Press [ENTER] to start cycle, Ctrl-C to quit")
@@ -19,9 +22,17 @@ def seconds_to_timestamp(seconds):
         return f"{minutes:02}:{seconds:02}"
 
 
+def bar(text, remaining, total, columns=80):
+    justified = text.ljust(columns)
+    position = int(columns * remaining / total)
+    return REVERSE + justified[:position] + NORMAL + justified[position:]
+
+
 def countdown(seconds):
+    total = seconds
     while seconds >= 0:
-        print(seconds_to_timestamp(seconds), end="      \r")
+        print(bar(seconds_to_timestamp(seconds), seconds, total),
+              end="\r")
         seconds -= 1
         sleep(DELAY)
 
